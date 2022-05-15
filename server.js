@@ -4,7 +4,7 @@
  * ***************************************************/
  
 var bGround = require('fcc-express-bground');
-//var myApp = require('./myApp');
+var myApp = require('./myApp');
 var express = require('express');
 var app = express();
 
@@ -28,6 +28,7 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
+
 var options = {
   dotfiles: 'ignore',
   etag: false,
@@ -37,14 +38,14 @@ var options = {
   redirect: false
 };
 
+app.use('/public',express.static(__dirname + "/public",options));
+
 app.get('/',(req,res)=>{
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.use('/public',express.static(__dirname + "/public",options));
-
 var port = process.env.PORT || 3000;
-bGround.setupBackgroundApp(app, __dirname).listen(port, function(){
+bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function(){
   bGround.log('Node is listening on port '+ port + '...')
 });
 
