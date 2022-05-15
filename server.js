@@ -38,7 +38,7 @@ var options = {
   redirect: false
 };
 
-app.use('/public',express.static(__dirname + "/public",options));
+app.use('/public', express.static(process.cwd() + '/public'));
 
 app.get('/',(req,res)=>{
   res.sendFile(__dirname + "/views/index.html");
