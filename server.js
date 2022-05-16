@@ -20,6 +20,11 @@ require('dotenv').config();
 //   next();
 // });
 
+app.use(function (req, res, next) {
+  console.log(`${req.method} ${req.path} ${req.ip}`);
+  next();
+});
+
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
     var allowedOrigins = ['https://narrow-plane.gomix.me', 'https://www.freecodecamp.com'];
