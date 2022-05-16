@@ -7,6 +7,9 @@
 //var myApp = require('./myApp');
 var express = require('express');
 var app = express();
+
+console.log(process.env.MESSAGE_STYLE);
+
 require('dotenv').config();
 
 // Logs all request paths and method
