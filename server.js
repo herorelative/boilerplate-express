@@ -5,12 +5,13 @@
  
 //var bGround = require('fcc-express-bground');
 //var myApp = require('./myApp');
-var express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
 var app = express();
 
 console.log(process.env.MESSAGE_STYLE);
 
-require('dotenv').config();
+dotenv.config();
 
 // Logs all request paths and method
 // app.use(function (req, res, next) {
@@ -50,7 +51,7 @@ if (!process.env.DISABLE_XORIGIN) {
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.get('/',(req,res)=>{
-  res.sendFile(__dirname + "/views/index.html");
+  res.sendFile(process.cwd() + "/views/index.html");
 });
 
 app.get('/json',(req,res)=>{
