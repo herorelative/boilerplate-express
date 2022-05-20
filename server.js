@@ -9,9 +9,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 var app = express();
 
-console.log(process.env.MESSAGE_STYLE);
-
 dotenv.config();
+
+console.log(process.env.MESSAGE_STYLE);
 
 // Logs all request paths and method
 // app.use(function (req, res, next) {
